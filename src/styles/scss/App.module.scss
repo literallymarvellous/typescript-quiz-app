@@ -1,0 +1,170 @@
+$bgClr: hsl(300, 2%, 91%);
+$primaryClr: hsl(0, 0%, 59%);
+$secondaryClr: hsl(300, 0%, 27%);
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.mb20 {
+  margin-block: 20px;
+}
+
+.mt100 {
+  margin-block: 100px;
+}
+
+.mt40 {
+  margin-block: 40px;
+}
+
+.fs20 {
+  font-size: 20px;
+}
+
+.fs18 {
+  font-size: 18px;
+}
+
+.fs-16 {
+  font-size: 16px;
+}
+
+.fw600 {
+  font-weight: 600;
+}
+
+.relative {
+  position: relative;
+}
+
+.App {
+  min-height: 100vh;
+  overflow: scroll;
+}
+
+.landingDiv {
+  margin-top: 100px;
+}
+
+.bgNone {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.info {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.quiz {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.diff {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  width: 75%;
+  max-width: 720px;
+  margin-inline: auto;
+  margin-top: 30px;
+}
+
+.label {
+  width: 100%;
+  text-align: left;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 180px;
+}
+
+.input {
+  appearance: none;
+  width: 100%;
+  background-color: $bgClr;
+  border: none;
+  border-bottom: 1px solid $primaryClr;
+  font-size: 5vw;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    font-size: 5vw;
+  }
+}
+
+.after {
+  &::after {
+    content: "Hit Enter ↵";
+    color: $secondaryClr;
+    text-align: right;
+    position: absolute;
+    top: 110%;
+    right: 0%;
+  }
+}
+
+.button {
+  margin-top: 100px;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  box-shadow: 3px 2px 2px $secondaryClr;
+}
+
+.circle {
+  position: absolute;
+  inset: 0;
+  top: 30%;
+  left: 93%;
+  border-radius: 100%;
+  background-color: black;
+  width: 4vw;
+  height: 4vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.questionNo {
+  font-size: 16px;
+  font-weight: 600;
+  color: $secondaryClr;
+  text-align: left;
+
+  &::before {
+    content: "←";
+    margin-right: 20px;
+    color: inherit;
+  }
+}
+
+.question {
+  font-weight: 600;
+  font-size: 18px;
+  text-align: left;
+}
+
+.timer {
+  font-weight: 600;
+  margin-right: 2rem;
+}

@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Quiz from "./components/Quiz";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { GlobalStyle } from "./styles/App.styles";
+import Landing from "./components/Landing";
+import Header from "./components/Header";
+import Aside from "./components/Aside";
+import Info from "./components/Info";
+import { AnimatePresence } from "framer-motion";
+import { QuizContentProvider } from "./context/context";
+import Difficulty from "./components/Difficulty";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <GlobalStyle />
+      <Router>
+        <QuizContentProvider>
+          <Header />
+          <Aside />
+          <AnimatePresence>
+            <Routes>
+              <Route path="/" element={<Landing />} />
+              <Route path="quiz" element={<Quiz />} />
+              <Route path="info" element={<Info />} />
+              <Route path="difficulty" element={<Difficulty />} />
+            </Routes>
+          </AnimatePresence>
+        </QuizContentProvider>
+      </Router>
     </div>
   );
-}
+};
 
 export default App;
