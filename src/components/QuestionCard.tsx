@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { FaArrowLeft, FaLongArrowAltLeft } from "react-icons/fa";
 import { AnswerObject } from "../API";
+import { secondaryClr } from "../styles/App.styles";
 import styles from "../styles/scss/App.module.scss";
 
 type Props = {
@@ -10,6 +12,8 @@ type Props = {
   totalQuestions: number;
   accUserAns: string[];
   callback: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  callback2: () => void;
+  callback3: () => void;
   setUserAnswers: React.Dispatch<React.SetStateAction<AnswerObject[]>>;
 };
 const QuestionCard: React.FC<Props> = ({
@@ -19,13 +23,39 @@ const QuestionCard: React.FC<Props> = ({
   totalQuestions,
   accUserAns,
   callback,
+  callback2,
+  callback3,
 }) => {
+  const [hover, setHover] = useState(false);
+
+  const onMouseEnter = (e: React.MouseEvent<HTMLLabelElement, MouseEvent>) => {
+    setHover(true);
+    e.currentTarget.style.color = "black";
+  };
+
+  const onMouseLeave = (e: React.MouseEvent<HTMLLabelElement, MouseEvent>) => {
+    setHover(false);
+    e.currentTarget.style.color = "";
+  };
+
   return (
     <div className={styles.quesForm}>
       <div>
-        <p className={styles.questionNo}>
-          {questionNo} / {totalQuestions}
-        </p>
+        <div className={`${styles.questionNo} ${styles.flexRow}`}>
+          <div
+            className={
+              questionNo > 1
+                ? `${styles.arrow} ${styles.arrowBg}`
+                : styles.arrow
+            }
+            onClick={callback3}
+          >
+            <FaLongArrowAltLeft fontSize="14px" />
+          </div>
+          <div>
+            {questionNo} / {totalQuestions}
+          </div>
+        </div>
         <p
           className={styles.question}
           dangerouslySetInnerHTML={{ __html: question }}
@@ -44,9 +74,14 @@ const QuestionCard: React.FC<Props> = ({
               defaultChecked={accUserAns[questionNo - 1] === answer}
             />
             <label
-              className={styles.options}
+              onMouseEnter={onMouseEnter}
+              onMouseLeave={onMouseLeave}
+              className={
+                hover ? `${styles.options} ${styles.active}` : styles.options
+              }
               htmlFor={answer}
               dangerouslySetInnerHTML={{ __html: answer }}
+              onClick={callback2}
             />
           </div>
         ))}

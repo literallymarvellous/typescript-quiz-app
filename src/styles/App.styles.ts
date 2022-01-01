@@ -18,6 +18,7 @@ export const GlobalStyle = createGlobalStyle`
 
   ul {
     display: flex;
+    align-items: center;
     padding-left: 5rem;
     color: black;
   }
@@ -40,8 +41,8 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     font: inherit;
     color: black;
-    height: 2.2em;
-    width: 2.2em;
+    height: 2.4em;
+    width: 2.4em;
     border: 1px solid black;
     border-radius: 50%;
     display: grid;
@@ -61,6 +62,11 @@ export const GlobalStyle = createGlobalStyle`
       transform-origin: bottom;
       transition: 350ms transform ease-in-out;
       box-shadow: inset 1em 1em black;
+
+      @media screen and (max-width: 768px) {
+      height: 1em;
+      width: 1em;
+    }
     }
 
     &:checked::before {
@@ -76,7 +82,7 @@ export const GlobalStyle = createGlobalStyle`
 export const Wrapper = styled.main`
   text-align: center;
   display: grid;
-  height: 100vh;
+  min-height: 100vh;
   grid-template-rows: 115px auto;
   grid-template-columns: 120px auto;
   width: 100vw;

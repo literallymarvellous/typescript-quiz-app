@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export const Heading = styled.header`
   position: fixed;
+  /* position: sticky; */
   width: 100vw;
 `;
 

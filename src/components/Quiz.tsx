@@ -26,8 +26,15 @@ function Quiz() {
   const [isLoading, setisLoading] = useState(false);
   const [userAnswer, setUserAnswer] = useState("");
 
-  const { setStarttime, setTime, showTimer, setShowTimer, ...a } =
-    useContext(QuizContext);
+  const {
+    setStarttime,
+    setTime,
+    showTimer,
+    setShowTimer,
+    username,
+    time,
+    ...a
+  } = useContext(QuizContext);
 
   let correctAns: Dic = {};
 
@@ -49,7 +56,6 @@ function Quiz() {
     questions.forEach((question, id) => {
       correctAns[id + 1] = question.correct_answer;
     });
-    return correctAns;
   };
 
   const manageAnswers = () => {
@@ -66,13 +72,15 @@ function Quiz() {
   };
 
   const nextQuestion = () => {
-    const nextQuestion = number + 1;
+    setTimeout(() => {
+      const nextQuestion = number + 1;
 
-    if (nextQuestion === TOTAL_QUESTIONS) {
-      return;
-    } else {
-      setNumber(nextQuestion);
-    }
+      if (nextQuestion === TOTAL_QUESTIONS) {
+        return;
+      } else {
+        setNumber(nextQuestion);
+      }
+    }, 500);
   };
 
   const prevQuestion = () => {
@@ -92,8 +100,6 @@ function Quiz() {
     let ansObj = Object.fromEntries(mappedArray);
 
     getAnswers();
-    console.log(correctAns);
-    console.log(ansObj);
 
     for (let i: number = 0; i < TOTAL_QUESTIONS; i++) {
       if (ansObj[i + 1] === correctAns[i + 1]) {
@@ -141,8 +147,14 @@ function Quiz() {
       <Container>
         <div className={styles.quiz}>
           {isLoading ? <CircleLoader /> : null}
-          {gameOver && <div>Score : {score}</div>}
-          {gameOver && <button onClick={startQuiz}>start</button>}
+          {gameOver && (
+            <div>
+              <p>
+                Well Done {username}, you finsihed in {time.h}: {time.s}{" "}
+                {time.s} with a Score of <span>{score}</span>
+              </p>
+            </div>
+          )}
           {!gameOver && !isLoading ? (
             <QuestionCard
               questionNo={number + 1}
@@ -152,19 +164,10 @@ function Quiz() {
               userAnswers={userAnswers}
               setUserAnswers={setUserAnswers}
               callback={handleChange}
+              callback2={nextQuestion}
+              callback3={prevQuestion}
               accUserAns={accUserAnswers}
             />
-          ) : null}
-          {!gameOver && !isLoading && number > 0 ? (
-            <button className="next" onClick={prevQuestion}>
-              Prev Question
-            </button>
-          ) : null}
-
-          {!gameOver && !isLoading && number !== TOTAL_QUESTIONS - 1 ? (
-            <button className="next" onClick={nextQuestion}>
-              Next Question
-            </button>
           ) : null}
 
           {!gameOver && !isLoading ? (

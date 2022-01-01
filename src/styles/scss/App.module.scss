@@ -1,6 +1,16 @@
 $bgClr: hsl(300, 2%, 91%);
-$primaryClr: hsl(0, 0%, 59%);
+$primaryClr: hsl(0, 0%, 30%);
 $secondaryClr: hsl(300, 0%, 27%);
+
+@mixin animate($animation, $duration, $method) {
+  animation: $animation $duration $method;
+}
+
+@mixin keyframes($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+}
 
 .flexCol {
   display: flex;
@@ -81,7 +91,7 @@ $secondaryClr: hsl(300, 0%, 27%);
 
 .quiz {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -122,21 +132,6 @@ $secondaryClr: hsl(300, 0%, 27%);
   }
 }
 
-.form {
-  width: 75%;
-  height: 70%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  max-width: 1024px;
-  margin-inline: auto;
-  margin-top: 30px;
-
-  @media screen and (max-width: 768px) {
-    justify-content: space-around;
-  }
-}
-
 .quesForm {
   width: 75%;
   height: 70%;
@@ -144,7 +139,6 @@ $secondaryClr: hsl(300, 0%, 27%);
   gap: 50px;
   max-width: 1024px;
   margin-inline: auto;
-  margin-top: 30px;
 }
 
 .label {
@@ -211,14 +205,33 @@ $secondaryClr: hsl(300, 0%, 27%);
 .questionNo {
   font-size: 16px;
   font-weight: 600;
-  color: $secondaryClr;
+  color: $primaryClr;
   text-align: left;
+}
 
-  &::before {
-    content: "←";
-    margin-right: 20px;
-    color: inherit;
+.arrow {
+  margin-right: 1rem;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+}
+
+.arrowBg {
+  border-radius: 50%;
+  box-shadow: inset 0px 0px 2px $secondaryClr;
+  cursor: pointer;
+
+  @include keyframes(arrow) {
+    from {
+      box-shadow: inset 0px 0px 1px $primaryClr;
+    }
+    to {
+      box-shadow: inset 0px 0px 5px $secondaryClr;
+    }
   }
+  @include animate(arrow, 1s, ease-in-out);
+  animation-iteration-count: 2;
 }
 
 .question {
@@ -233,12 +246,8 @@ $secondaryClr: hsl(300, 0%, 27%);
 
 .options {
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 3.5vw;
   margin-left: 1rem;
-
-  @media screen and (max-width: 768px) {
-    font-size: 1.5rem;
-  }
 }
 
 .optionsDiff {
@@ -254,4 +263,10 @@ $secondaryClr: hsl(300, 0%, 27%);
 .timer {
   font-weight: 600;
   margin-right: 2rem;
+}
+
+.active {
+  color: rgba(0, 0, 0, 0);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
 }
