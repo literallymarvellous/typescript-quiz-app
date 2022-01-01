@@ -9,6 +9,11 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${bgClr};
     overflow: scroll;
+    font-family: 'Roboto', sans-serif;;
+  }
+
+  :focus {
+    outline-color: ${secondaryClr};
   }
 
   ul {
@@ -28,6 +33,43 @@ export const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     font-weight: 600;
     cursor: pointer;
+  }
+
+  input[type="radio"] {
+    appearance: none;
+    margin: 0;
+    font: inherit;
+    color: black;
+    height: 2.2em;
+    width: 2.2em;
+    border: 1px solid black;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+
+    @media screen and (max-width: 768px) {
+      height: 1.5em;
+      width: 1.5em;
+    }
+
+    &::before {
+      content: "";
+      width: 1.4em;
+      height: 1.4em;
+      border-radius: 50%;
+      transform: scale(0);
+      transform-origin: bottom;
+      transition: 350ms transform ease-in-out;
+      box-shadow: inset 1em 1em black;
+    }
+
+    &:checked::before {
+      transform: scale(1)
+    }
+
+    &:focus {
+      outline-color: ${secondaryClr};
+    }
   }
 `;
 

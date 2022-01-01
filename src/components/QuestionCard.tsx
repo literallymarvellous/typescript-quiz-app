@@ -21,17 +21,20 @@ const QuestionCard: React.FC<Props> = ({
   callback,
 }) => {
   return (
-    <div>
-      <p className={styles.questionNo}>
-        {questionNo} / {totalQuestions}
-      </p>
-      <p
-        className={styles.question}
-        dangerouslySetInnerHTML={{ __html: question }}
-      />
+    <div className={styles.quesForm}>
+      <div>
+        <p className={styles.questionNo}>
+          {questionNo} / {totalQuestions}
+        </p>
+        <p
+          className={styles.question}
+          dangerouslySetInnerHTML={{ __html: question }}
+        />
+      </div>
+
       <div>
         {answers.map((answer) => (
-          <div key={answer}>
+          <div key={answer} className={`${styles.textleft} ${styles.flexRow}`}>
             <input
               type="radio"
               id={answer}
@@ -41,6 +44,7 @@ const QuestionCard: React.FC<Props> = ({
               defaultChecked={accUserAns[questionNo - 1] === answer}
             />
             <label
+              className={styles.options}
               htmlFor={answer}
               dangerouslySetInnerHTML={{ __html: answer }}
             />

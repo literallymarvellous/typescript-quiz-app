@@ -23,14 +23,12 @@ const Info: React.FC = () => {
       <Wrapper>
         <Container>
           <div className={styles.info}>
-            <form className={styles.form} onSubmit={onSubmitForm}>
+            <form className={styles.infoForm} onSubmit={onSubmitForm}>
               <div className={styles.label}>
-                <label htmlFor="name">Enter Username</label>
+                <label htmlFor="name">Enter your Username</label>
               </div>
 
-              <div
-                className={`${styles.mt100} ${styles.relative} ${styles.after}`}
-              >
+              <div className={`${styles.relative} ${styles.after}`}>
                 <input
                   className={styles.input}
                   type="text"
