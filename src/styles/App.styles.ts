@@ -84,6 +84,7 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const Wrapper = styled.main`
+  z-index: 1;
   text-align: center;
   display: grid;
   min-height: 100vh;

@@ -4,6 +4,7 @@ export const Sidebar = styled.aside`
   position: fixed;
   top: 0%;
   left: 0%;
+  z-index: 10;
   min-height: 100vh;
   overflow: scroll;
 `;

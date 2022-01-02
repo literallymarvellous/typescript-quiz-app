@@ -1,10 +1,12 @@
-import { primaryClr, secondaryClr } from "./App.styles";
+import { bgClr } from "./App.styles";
 import styled from "styled-components";
 
 export const Heading = styled.header`
   position: fixed;
-  /* position: sticky; */
   width: 100vw;
+  top: 0%;
+  z-index: 10;
+  background-color: ${bgClr};
 `;
 
 export const Nav = styled.nav`
