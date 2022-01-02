@@ -72,9 +72,15 @@ const QuestionCard: React.FC<Props> = ({
               value={answer}
               onChange={callback}
               defaultChecked={accUserAns[questionNo - 1] === answer}
+              onClick={() =>
+                setTimeout(() => {
+                  setHover(false);
+                }, 500)
+              }
             />
             <label
               onMouseEnter={onMouseEnter}
+              onMouseOver={onMouseEnter}
               onMouseLeave={onMouseLeave}
               className={
                 hover ? `${styles.options} ${styles.active}` : styles.options

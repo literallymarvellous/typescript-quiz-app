@@ -13,7 +13,7 @@ const Difficulty = () => {
 
     setTimeout(() => {
       navigate("/quiz");
-    }, 2000);
+    }, 500);
   };
 
   return (

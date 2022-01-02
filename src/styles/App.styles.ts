@@ -9,7 +9,8 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${bgClr};
     overflow: scroll;
-    font-family: 'Roboto', sans-serif;;
+    font-family: 'Roboto', sans-serif;
+    user-select: none;
   }
 
   :focus {
@@ -47,6 +48,7 @@ export const GlobalStyle = createGlobalStyle`
     border-radius: 50%;
     display: grid;
     place-items: center;
+    flex: none;
 
     @media screen and (max-width: 768px) {
       height: 1.5em;

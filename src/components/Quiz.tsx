@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import {
   Difficulty,
   fetchQuiz,
@@ -22,8 +21,8 @@ function Quiz() {
   const [number, setNumber] = useState(0);
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
   const [score, setScore] = useState(0);
-  const [gameOver, setGameOver] = useState(true);
-  const [isLoading, setisLoading] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
+  const [isLoading, setisLoading] = useState(true);
   const [userAnswer, setUserAnswer] = useState("");
 
   const {
@@ -39,6 +38,20 @@ function Quiz() {
   let correctAns: Dic = {};
 
   const startQuiz = async () => {
+    const data = await fetchQuiz(TOTAL_QUESTIONS, Difficulty.EASY);
+    setQuestions(data);
+    setScore(0);
+    setUserAnswers([]);
+    setNumber(0);
+    setisLoading(false);
+    setTime({ s: 0, m: 0, h: 0 });
+    setUserAnswer("");
+    if (questions) {
+      setStarttime(true);
+    }
+  };
+
+  const restartQuiz = async () => {
     setGameOver(false);
     setisLoading(true);
     const data = await fetchQuiz(TOTAL_QUESTIONS, Difficulty.EASY);
@@ -48,8 +61,10 @@ function Quiz() {
     setNumber(0);
     setisLoading(false);
     setTime({ s: 0, m: 0, h: 0 });
-    setStarttime(true);
     setUserAnswer("");
+    if (questions) {
+      setStarttime(true);
+    }
   };
 
   const getAnswers = () => {
@@ -115,7 +130,6 @@ function Quiz() {
   useEffect(() => {
     startQuiz();
     setShowTimer(true);
-    setStarttime(true);
     userAns = [];
     accUserAnswers = [];
 
@@ -147,14 +161,26 @@ function Quiz() {
       <Container>
         <div className={styles.quiz}>
           {isLoading ? <CircleLoader /> : null}
-          {gameOver && (
+          {gameOver ? (
             <div>
-              <p>
-                Well Done {username}, you finsihed in {time.h}: {time.s}{" "}
-                {time.s} with a Score of <span>{score}</span>
-              </p>
+              <div className={styles.score}>
+                <p>Well Done {username} 🥳</p>
+                <p>
+                  You finsihed in{" "}
+                  <span>{time.h >= 10 ? time.h : "0" + time.h}</span>
+                  &nbsp;:&nbsp;
+                  <span>{time.m >= 10 ? time.m : "0" + time.m}</span>
+                  &nbsp;:&nbsp;
+                  <span>{time.s >= 10 ? time.s : "0" + time.s}</span>&nbsp;
+                  {time.h !== 0 ? "hours" : time.m !== 0 ? "mins" : "secs"} with
+                  a Score of <span>{score}</span>
+                </p>
+                <button className={styles.button} onClick={startQuiz}>
+                  Restart
+                </button>
+              </div>
             </div>
-          )}
+          ) : null}
           {!gameOver && !isLoading ? (
             <QuestionCard
               questionNo={number + 1}
@@ -171,7 +197,9 @@ function Quiz() {
           ) : null}
 
           {!gameOver && !isLoading ? (
-            <button onClick={finish}>Finish</button>
+            <button className={styles.btn} onClick={finish}>
+              Finish
+            </button>
           ) : null}
         </div>
       </Container>
