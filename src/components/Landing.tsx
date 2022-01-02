@@ -1,9 +1,6 @@
-import React from "react";
 import { Outlet, Link } from "react-router-dom";
 import { Container, Wrapper } from "../styles/App.styles";
 import { Title } from "../styles/Landing.styles";
-import Header from "../components/Header";
-import Aside from "../components/Aside";
 import styles from "../styles/scss/App.module.scss";
 import { motion } from "framer-motion";
 
@@ -17,7 +14,7 @@ const Landing = () => {
               <Title>Welcome to Quiztopia 🧩</Title>
 
               <p className={styles.fs18}>
-                Time to test how much you think know
+                Time to test how much you think you know
               </p>
 
               <button className={styles.button}>

@@ -44,7 +44,6 @@ export const GlobalStyle = createGlobalStyle`
     color: black;
     height: 2.4em;
     width: 2.4em;
-    border: 1px solid black;
     border-radius: 50%;
     display: grid;
     place-items: center;

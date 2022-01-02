@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { FaArrowLeft, FaLongArrowAltLeft } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaLongArrowAltLeft } from "react-icons/fa";
 import { AnswerObject } from "../API";
-import { secondaryClr } from "../styles/App.styles";
 import styles from "../styles/scss/App.module.scss";
 
 type Props = {

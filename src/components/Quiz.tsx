@@ -175,7 +175,7 @@ function Quiz() {
                   {time.h !== 0 ? "hours" : time.m !== 0 ? "mins" : "secs"} with
                   a Score of <span>{score}</span>
                 </p>
-                <button className={styles.button} onClick={startQuiz}>
+                <button className={styles.button} onClick={restartQuiz}>
                   Restart
                 </button>
               </div>

@@ -1,9 +1,5 @@
-import React, { useContext, useState } from "react";
-import {
-  FaArrowAltCircleRight,
-  FaArrowCircleRight,
-  FaArrowRight,
-} from "react-icons/fa";
+import React, { useContext } from "react";
+import { FaArrowRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { QuizContext } from "../context/context";
 import { Container, Wrapper } from "../styles/App.styles";

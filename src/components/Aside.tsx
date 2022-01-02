@@ -1,4 +1,3 @@
-import React from "react";
 import { Container, Sidebar } from "../styles/Aside.styles";
 import { FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
 import styles from "../styles/scss/App.module.scss";
