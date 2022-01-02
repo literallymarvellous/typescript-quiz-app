@@ -11,7 +11,9 @@ export const GlobalStyle = createGlobalStyle`
     overflow: scroll;
     font-family: 'Roboto', sans-serif;
     user-select: none;
+    font-display: swap;
   }
+
 
   :focus {
     outline-color: ${secondaryClr};
@@ -42,6 +44,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     font: inherit;
     color: black;
+    border: 1px solid black;
     height: 2.4em;
     width: 2.4em;
     border-radius: 50%;
