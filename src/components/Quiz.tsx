@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useCallback } from "react";
 import {
   Difficulty,
   fetchQuiz,
@@ -24,6 +24,7 @@ function Quiz() {
   const [gameOver, setGameOver] = useState(false);
   const [isLoading, setisLoading] = useState(true);
   const [userAnswer, setUserAnswer] = useState("");
+  const [, updateState] = useState({});
 
   const {
     setStarttime,
@@ -126,6 +127,8 @@ function Quiz() {
     setGameOver(true);
     setStarttime(false);
   };
+
+  const forceUpdate = useCallback(() => updateState({}), []);
 
   useEffect(() => {
     startQuiz();
