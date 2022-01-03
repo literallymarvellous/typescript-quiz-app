@@ -49,6 +49,7 @@ const QuestionCard: React.FC<Props> = ({
         <div className={`${styles.questionNo} ${styles.flexRow}`}>
           <div className={styles.overflowH}>
             <motion.div
+              layout
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -50 }}

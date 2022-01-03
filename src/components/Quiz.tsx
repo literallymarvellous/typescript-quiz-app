@@ -128,8 +128,6 @@ function Quiz() {
     setStarttime(false);
   };
 
-  const forceUpdate = useCallback(() => updateState({}), []);
-
   useEffect(() => {
     startQuiz();
     setShowTimer(true);

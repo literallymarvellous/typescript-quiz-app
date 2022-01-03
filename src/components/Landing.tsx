@@ -30,7 +30,7 @@ const Landing = () => {
                   transition={{ duration: 0.5 }}
                 >
                   <p className={styles.fs18}>
-                    Time to test how much you think you know
+                    Time to realize how little you think you know 🙂
                   </p>
                 </motion.div>
               </div>
