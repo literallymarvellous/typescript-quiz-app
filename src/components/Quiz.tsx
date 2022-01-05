@@ -1,5 +1,11 @@
 import React, { useContext, useEffect, useState, useCallback } from "react";
-import { fetchQuiz, QuestionState, Dic, AnswerObject } from "../API";
+import {
+  fetchQuiz,
+  QuestionState,
+  Dic,
+  AnswerObject,
+  Difficulty,
+} from "../API";
 import { Container, Wrapper } from "../styles/App.styles";
 import QuestionCard from "./QuestionCard";
 import { CircleLoader } from "react-spinners";
@@ -32,9 +38,18 @@ function Quiz() {
   } = useContext(QuizContext);
 
   let correctAns: Dic = {};
+  let difficulty: Difficulty;
+
+  if (level == "easy") {
+    difficulty = Difficulty.EASY;
+  } else if (level == "medium") {
+    difficulty = Difficulty.MEDIUM;
+  } else {
+    difficulty = Difficulty.HARD;
+  }
 
   const startQuiz = async () => {
-    const data = await fetchQuiz(TOTAL_QUESTIONS, level);
+    const data = await fetchQuiz(TOTAL_QUESTIONS, difficulty);
     setQuestions(data);
     setScore(0);
     setUserAnswers([]);
@@ -50,7 +65,7 @@ function Quiz() {
   const restartQuiz = async () => {
     setGameOver(false);
     setisLoading(true);
-    const data = await fetchQuiz(TOTAL_QUESTIONS, level);
+    const data = await fetchQuiz(TOTAL_QUESTIONS, difficulty);
     setQuestions(data);
     setScore(0);
     setUserAnswers([]);
