@@ -24,7 +24,6 @@ function Quiz() {
   const [gameOver, setGameOver] = useState(false);
   const [isLoading, setisLoading] = useState(true);
   const [userAnswer, setUserAnswer] = useState("");
-  const [, updateState] = useState({});
 
   const {
     setStarttime,
@@ -40,9 +39,9 @@ function Quiz() {
   let correctAns: Dic = {};
   let difficulty: Difficulty;
 
-  if (level == "easy") {
+  if (level === "easy") {
     difficulty = Difficulty.EASY;
-  } else if (level == "medium") {
+  } else if (level === "medium") {
     difficulty = Difficulty.MEDIUM;
   } else {
     difficulty = Difficulty.HARD;
