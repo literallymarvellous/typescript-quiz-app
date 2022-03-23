@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle, css } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export const bgClr = `hsl(300,2%,91%)`;
 export const primaryClr = `#969696`;

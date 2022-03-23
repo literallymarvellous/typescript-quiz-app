@@ -1,10 +1,5 @@
 import { motion } from "framer-motion";
-import React, {
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useState,
-} from "react";
+import React, { useState } from "react";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import { AnswerObject } from "../API";
 import styles from "../styles/scss/App.module.scss";

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { GlobalStyle } from "./styles/App.styles";
 import Header from "./components/Header";
 import Aside from "./components/Aside";

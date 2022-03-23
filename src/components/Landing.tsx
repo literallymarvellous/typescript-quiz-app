@@ -1,4 +1,4 @@
-import { Outlet, Link, useLocation } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 import { Container, Wrapper } from "../styles/App.styles";
 import { Title } from "../styles/Landing.styles";
 import styles from "../styles/scss/App.module.scss";
