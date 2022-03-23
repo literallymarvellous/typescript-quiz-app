@@ -8,7 +8,7 @@ import { dificultyArray } from "../utils";
 
 const Difficulty = () => {
   const [hover, setHover] = useState(false);
-  const { level, setLevel, ...rest } = useContext(QuizContext);
+  const { setLevel } = useContext(QuizContext);
   let navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -3,7 +3,7 @@ import { QuizContext } from "../context/context";
 import styles from "../styles/scss/App.module.scss";
 
 const Timer = () => {
-  const { starttime, time, setTime, ...rest } = useContext(QuizContext);
+  const { starttime, time, setTime } = useContext(QuizContext);
 
   let updatedS = time.s;
   let updatedM = time.m;
@@ -34,6 +34,7 @@ const Timer = () => {
     return () => {
       clearInterval(timer);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [starttime]);
   return (
     <>

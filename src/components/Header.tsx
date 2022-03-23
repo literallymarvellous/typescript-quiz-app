@@ -5,7 +5,7 @@ import { Heading, Nav } from "../styles/Header.styles";
 import Timer from "./Timer";
 
 const Header = () => {
-  const { showTimer, ...a } = useContext(QuizContext);
+  const { showTimer } = useContext(QuizContext);
 
   return (
     <Heading>

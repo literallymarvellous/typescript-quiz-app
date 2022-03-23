@@ -7,7 +7,7 @@ import { Container, Wrapper } from "../styles/App.styles";
 import styles from "../styles/scss/App.module.scss";
 
 const Info: React.FC = () => {
-  const { username, setUsername, ...rest } = useContext(QuizContext);
+  const { setUsername } = useContext(QuizContext);
   let navigate = useNavigate();
 
   const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {

@@ -25,16 +25,8 @@ function Quiz() {
   const [isLoading, setisLoading] = useState(true);
   const [userAnswer, setUserAnswer] = useState("");
 
-  const {
-    setStarttime,
-    setTime,
-    showTimer,
-    setShowTimer,
-    username,
-    time,
-    level,
-    ...a
-  } = useContext(QuizContext);
+  const { setStarttime, setTime, setShowTimer, username, time, level } =
+    useContext(QuizContext);
 
   let correctAns: Dic = {};
   let difficulty: Difficulty;
@@ -147,6 +139,7 @@ function Quiz() {
       setTime({ s: 0, m: 0, h: 0 });
       setShowTimer(false);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -164,6 +157,7 @@ function Quiz() {
 
   useEffect(() => {
     manageAnswers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userAnswer]);
 
   return (
