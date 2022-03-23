@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { QuizContext } from "../context/context";
 import styles from "../styles/scss/App.module.scss";
 
